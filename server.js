@@ -25,9 +25,11 @@ app.use(bodyParser.json());
 
 
 //importing route
-var routes = require('./api/routes/userRoutes', './api/routes/markerRoutes'); 
+var markerRoutes = require('./api/routes/markerRoutes'); 
+var userRoutes = require('./api/routes/userRoutes'); 
 //register the route
-routes(app); 
+userRoutes(app); 
+markerRoutes(app);
 
 
 

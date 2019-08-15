@@ -5,11 +5,11 @@ var Schema = mongoose.Schema;
 
 var MarkerSchema = new Schema({
   lat: {
-    type: Number,
+    type: String,
     required: 'you must provide a lat'
   },
   lng: {
-    type: Number,
+    type: String,
     required: 'you must provide a lat'
   }
 });

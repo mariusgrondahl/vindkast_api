@@ -5,7 +5,7 @@ module.exports = function(app) {
   // Marker Routes
   app.route('/marker')
     .get(marker.list_all_markers)
-    .post(marker.create_a_markers);
+    .post(marker.create_a_marker);
 
 
   app.route('/marker/:markerId')
