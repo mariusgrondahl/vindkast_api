@@ -4,9 +4,6 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const port = process.env.PORT;
 
-const passport = require('passport');
-// const morgan = require('morgan');
-// const flash = require('connect-flash');
 const User = require('./api/models/userModel'); 
 const Marker = require('./api/models/markerModel'); 
 const bodyParser = require('body-parser');
@@ -14,6 +11,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -38,10 +36,6 @@ app.use(session({
     })
 }));
 
-//Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 // Protecting our routes
 function protect(req,res,next){
@@ -51,7 +45,6 @@ function protect(req,res,next){
         next();
     }
 }
-
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -63,12 +56,10 @@ app.use(cors({
     origin: process.env.REACT_APP
 }))
 
-//register the routes
-app.use('/',require('./api/routes/index'));
-
-app.use('/user',require('./api/routes/userRoutes'));
+//Setting up our routes
+app.use('/',require('./api/routes/authRoutes'));
 app.use('/marker', require('./api/routes/markerRoutes'));
-;
+
 
 app.listen(port, ()=> {
     console.log('Vindkast API started on: ' + port);

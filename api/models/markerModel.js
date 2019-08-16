@@ -4,19 +4,11 @@ var Schema = mongoose.Schema;
 
 
 var MarkerSchema = new Schema({
-  wind_range: {
-      lower_bound: Number,
-  }, 
-  wind_direction: { 
-    north: Boolean,
-    northeast: Boolean,
-    east: Boolean,
-    southeast: Boolean,
-    south: Boolean,
-    southwest: Boolean,
-    west: Boolean,
-    northwest: Boolean,
-}, 
+  spot_name: {
+    type: String,
+    required: 'you must provide a name for your forecast'
+  },
+
   lat: {
     type: String,
     required: 'you must provide a lat'
@@ -24,7 +16,22 @@ var MarkerSchema = new Schema({
   lng: {
     type: String,
     required: 'you must provide a lat'
-  }
+  },
+
+  // Setting up windirections and Aler limit
+  wind_range: {
+    lower_bound: Number,
+  }, 
+
+  north: { type: Boolean, default: false },
+  north_east: { type: Boolean, default: false },
+  east: { type: Boolean, default: false },
+  south_east: { type: Boolean, default: false },
+  south: { type: Boolean, default: false },
+  south_west: { type: Boolean, default: false },
+  west: { type: Boolean, default: false },
+  north_west: { type: Boolean, default: false },
+
 });
 
 

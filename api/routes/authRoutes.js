@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 var session = require('express-session');
 const User = require("../models/userModel");
-var createError = require('http-errors')
+var createError = require('http-errors');
 
 
 router.post("/signup", (req,res,next)=> {   
@@ -22,7 +22,7 @@ router.post("/signup", (req,res,next)=> {
 
 
 router.post("/login", (req,res,next)=> {
-    User.findOne({$or: [{username: req.body.username}, {email: req.body.username}]})
+    User.findOne({$or: [{username: req.body.username}]})
         .then((user)=> {
             if(!user) next(createError(401), "Invalid credentials.");
             else {
@@ -33,9 +33,8 @@ router.post("/login", (req,res,next)=> {
                         let sessionData = {username, email, firstname, lastname, id};
                         req.session.user = sessionData;
                         res.status(200).json(sessionData);
-                        console.log("Logga inn")
                     } else {
-                        next(createError(401, "Invalid credentials."));
+                        next(createError(401, "Invalid credentials 2."));
                     }
                 })
             }
