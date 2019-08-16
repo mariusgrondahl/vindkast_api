@@ -1,4 +1,3 @@
-'use strict';
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -16,6 +15,11 @@ var MarkerSchema = new Schema({
   lng: {
     type: String,
     required: 'you must provide a lat'
+  },
+
+  by_user: {
+    type: Schema.Types.ObjectId,
+    ref: "user"
   },
 
   // Setting up windirections and Aler limit
