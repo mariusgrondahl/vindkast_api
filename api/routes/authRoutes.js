@@ -34,7 +34,7 @@ router.post("/login", (req,res,next)=> {
                         req.session.user = sessionData;
                         res.status(200).json(sessionData);
                     } else {
-                        next(createError(401, "Invalid credentials 2."));
+                        next(createError(401, "Invalid credentials."));
                     }
                 })
             }
