@@ -8,6 +8,11 @@ var MarkerSchema = new Schema({
     required: 'you must provide a name for your forecast'
   },
 
+  desc: {
+    type: String,
+    required: 'Please provide a short description to make the site worth it'
+  },
+
   lat: {
     type: String,
     required: 'you must provide a lat'
@@ -17,16 +22,22 @@ var MarkerSchema = new Schema({
     required: 'you must provide a lat'
   },
 
+  img: {
+    type: String,
+    default: '/img/defaultspot.jpg'
+  },
+
   by_user: {
     type: Schema.Types.ObjectId,
     ref: "user"
+  
   },
 
   // Setting up windirections and Aler limit
   wind_range: {
     lower_bound: Number,
   }, 
-
+  
   north: { type: Boolean, default: false },
   north_east: { type: Boolean, default: false },
   east: { type: Boolean, default: false },

@@ -8,7 +8,7 @@ var createError = require('http-errors');
 router.post("/create", (req,res,next)=> {   
     Marker.create(req.body)
         .then((marker)=> {
-            let {lat, lng, spot_name} = marker;
+            let {spot_name, desc, lat, lng, img, north, north_east, east, south_east, south, south_west, west, north_west} = marker;
             res.send(marker);
         })
 

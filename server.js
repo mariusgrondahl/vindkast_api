@@ -53,12 +53,14 @@ app.use(cookieParser());
 // Setting up CORSFIX
 app.use(cors({
     credentials: true,
-    origin: process.env.REACT_APP
+    origin: true
 }))
 
 //Setting up our routes
 app.use('/',require('./api/routes/authRoutes'));
 app.use('/marker', require('./api/routes/markerRoutes'));
+app.use('/user', require('./api/routes/userRoutes'));
+
 
 
 app.listen(port, ()=> {
