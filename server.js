@@ -12,7 +12,6 @@ const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
-
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 
@@ -24,7 +23,6 @@ mongoose.connect(process.env.MONGO_PASS, {useNewUrlParser: true, useFindAndModif
   .catch(err => {
     console.error('Error connecting to mongo', err)
   });
-
 
 // Setting up user sessions
 app.use(session({
@@ -52,20 +50,13 @@ app.use(cookieParser());
 // Setting up CORSFIX
 app.use(cors({
     credentials: true,
-    origin: true,
-    methods: 'GET, POST, PUT, DELETE, OPTIONS', 
-    allowedHeaders: 'Authorization, Access-Control-Allow-Headers, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json'
+    origin: true
 }))
-
-
-
 
 //Setting up our routes
 app.use('/',require('./api/routes/authRoutes'));
 app.use('/marker', require('./api/routes/markerRoutes'));
 app.use('/user', require('./api/routes/userRoutes'));
-
-
 
 app.listen(port, ()=> {
     console.log('Vindkast API started on: ' + port);
