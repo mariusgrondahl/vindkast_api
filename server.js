@@ -36,7 +36,6 @@ app.use(session({
     })
 }));
 
-
 // Protecting our routes
 function protect(req,res,next){
     if(!req.session.user) {
@@ -55,7 +54,7 @@ app.use(cors({
     credentials: true,
     origin: true,
     methods: 'GET, POST, PUT, DELETE, OPTIONS', 
-    allowedHeaders: 'Authorization, Access-Control-Allow-Headers, Origin,X- Requested-With,Content-Type,Accept,content-type,application/json'
+    allowedHeaders: 'Authorization, Access-Control-Allow-Headers, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json'
 }))
 
 
