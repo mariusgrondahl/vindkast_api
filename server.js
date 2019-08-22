@@ -53,8 +53,13 @@ app.use(cookieParser());
 // Setting up CORSFIX
 app.use(cors({
     credentials: true,
-    origin: true
+    origin: true,
+    methods: 'GET, POST, PUT, DELETE, OPTIONS', 
+    allowedHeaders: 'Authorization, Access-Control-Allow-Headers, Origin,X- Requested-With,Content-Type,Accept,content-type,application/json'
 }))
+
+
+
 
 //Setting up our routes
 app.use('/',require('./api/routes/authRoutes'));
