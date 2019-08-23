@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var MarkerSchema = new Schema({
   spot_name: {
     type: String,
@@ -27,16 +26,10 @@ var MarkerSchema = new Schema({
     default: '/img/defaultspot.jpg'
   },
 
-  by_user: {
-    type: Schema.Types.ObjectId,
-    ref: "user"
-  
+  creator: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User' 
   },
-
-  // Setting up windirections and Aler limit
-  wind_range: {
-    lower_bound: Number,
-  }, 
   
   north: { type: Boolean, default: false },
   north_east: { type: Boolean, default: false },
